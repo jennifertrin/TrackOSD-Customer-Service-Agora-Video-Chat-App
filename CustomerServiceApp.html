@@ -169,7 +169,7 @@ function join() {
             console.log(volume.level);
     });
 });
-  /* setInterval(function(){
+  setInterval(function(){
 	client.getRemoteVideoStats(function(statsMap){
 		// video stats map for remote streams, indexed by uid
 		var stats = statsMap[uid];
@@ -186,7 +186,7 @@ function join() {
 		// gateway network stats
 		console.log(JSON.stringify(stats));
 	})
-}, 2 * 1000); */
+}, 2 * 1000);
 
   
   client.on('stream-subscribed', function (evt) {
