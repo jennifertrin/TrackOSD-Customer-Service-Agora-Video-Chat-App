@@ -1,15 +1,11 @@
-* {
-    box-sizing: border-box;
-}
-
-.input {
+input {
     width: 70%;
     padding: 10px;
     border: 1px solid blue;
     font-size: 16px;
     border-radius: 15px;
 }
-.button {
+#trackbutton {
     margin-left: -20%;
   background-color: #4CAF50;
   border-radius: 15px;
@@ -19,3 +15,62 @@
   padding: 10px;
   font-size: 16px;
 }
+h1 {
+    font-size: 20px;
+    font-family: "Helvetica";
+    margin-left: 10px;
+}
+#titleinstruct {
+    font-size: 17px;
+    font-family: "Helvetica";
+    text-align: left;
+    margin-left: 5px;
+}
+
+#Needhelp {
+    font-size: 15px;
+    color: goldenrod;
+    font-family: "Helvetica";font-family: "Helvetica";
+    text-align: left;
+    font-weight: bold;
+    font-style: italic;
+    margin-left: 5px;
+}
+.active, .collapsible:hover {
+    background-color: #555;
+  }
+  
+  .content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }
+
+   i {
+    font-size: 24px;
+    padding-left: 10px;
+    padding-right: 5px;
+    color: #4CAF50;
+   }
+
+   #details {
+    font-family: "Helvetica";
+    text-align: left;
+    margin-left: 10px;
+   }
+
+  /* Darker background on mouse-over */
+
+::-webkit-input-placeholder {
+    font-style: italic;
+ }
+ :-moz-placeholder {
+    font-style: italic;  
+ }
+ ::-moz-placeholder {
+    font-style: italic;  
+ }
+ :-ms-input-placeholder {  
+    font-style: italic; 
+ }

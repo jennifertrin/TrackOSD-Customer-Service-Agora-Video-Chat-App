@@ -1,10 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<title>Tracking Interface</title>
-<meta name="description" content="First Page">
-<meta name="keywords" content="Tracking Interface">
+  <html lang="en">
+  <title>Tracking Interface</title>
+  <meta name="description" content="Front page for tracking shipment">
+  <meta name="author" content="SitePoint">
+  <link rel="stylesheet" href="CustomerService.css">
 </head>
 <body>
+  <div><p id="titleinstruct">Enter your tracking number below (Please enter a random 6-digit number to test the app for the Agora Hackathon).</p></div>
+  <div>
+  <input id = "trackingnumber" type="text" name="trackingnumber" placeholder="Tracking number">
+  <button id ="trackbutton" type = "button" class = "collapsible">Track</button>
+  <div class="content">
+      <script>
+          var inputtracking = document.getElementById("trackingnumber").value;
+        </script>
+    <h1>Shipment Details for <script type="text/javascript">
+      document.write(inputtracking)
+    </script></h1>
+    <div id="details">
+    <p>Mode: Small Parcel</p>
+    <p>Estimated date of arrival: Delivered on 12/13/2018</p>
+    </div>
+    <div><p id="Needhelp">Need help? Contact Customer Service via</p>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+      <div class="icon-bar">
+        <a href="#"><i class="fas fa-video" onclick = "location.href = 'CustomerServiceApp.html'"></i></a> 
+        <a href="#"><i class="fas fa-envelope-open-text"></i></a> 
+        <a href="#"><i class="fas fa-phone"></i></a>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+  <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }
+      </script>
 </body>
 </html>
