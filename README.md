@@ -6,7 +6,7 @@
 <b>Online Shoppers</b>
 Have you had to attach numerous photos of different angles of a damaged package to Amazon or Ebay customer service?
 When a retailer ships the wrong item, have you had to write lengthy description or explain over the phone without any visual aids on what you received instead of the product you ordered? 
-<b>Retailers<\b>
+<b>Retailers</b>
 Have your company need to make a disposition on a damaged or short shipment without any visual evidence?
   
 Instead, online shoppers, retailers, and transport carriers can resolve shipping issues faster by connecting with each other via video chat.
