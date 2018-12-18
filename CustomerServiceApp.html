@@ -38,26 +38,9 @@ Host: <input id="video" type="checkbox" checked></input>
 <button id="unpublish" class="btn btn-primary" onclick="unpublish()">Unpublish</button>
 </div>
 </div>
-
-    <!--style>
-    .video__box{width:910px; margin:0 auto; overflow:hidden;}
-    .video__main{ width:810px; height:607px;float:left }
-    .video__list{ width:200px; height:607px; float:left;}
-    .video__item{ width:200px; height:174px; hei background:url(/img/icon_live.png) center center no-repeat; }
-    </style>
-    <div class="video__main">
-    </div>
-    <div class="video__list">
-        <div class="video__item"></div>
-        <div id="video" class="video__item">
-            <div id="agora_local"></div>
-        </div>
-    </div-->
-
 <div id="video" style="margin:0 auto;">
-    <div id="agora_local" style="float:right;width:210px;height:147px;display:inline-block;"></div>
+    <div id="agora_local" style="float:center;width:500px;height:400px;display:inline-block;"></div>
 </div>
-
 <script language="javascript">
 
 if(!AgoraRTC.checkSystemRequirements()) {
@@ -163,6 +146,48 @@ function join() {
     });
   });
 
+  // Sets the audio mixing options.
+// filePath is a mandatory parameter used to indicate an online URL of the mixing audio.
+// cycle is an optional parameter used to indicate the number of playback loops and it needs to be a positive integer. The web browser needs to be Google Chrome 65+.
+// replace is an optional parameter used to indicate if the audio mixing replaces the original audio. 
+// playTime is a mandatory parameter used to set the starting position of mixing audio playback. 0 means playing the mixing file from the beginning.
+var options = {
+      filePath: "http://www.hochmuth.com/mp3/Haydn_Cello_Concerto_D-1.mp3", 
+      cycle: 1, 
+      replace: false, 
+      playTime:0 
+}
+
+// Starts audio mixing.
+localStream.startAudioMixing(options, function(err){
+     if (err){
+             console.log("Failed to start audio mixing. " + err);
+      }
+});
+
+// Adjusts the volume of audio mixing. The value of volume ranges between 1 and 100.
+localStream.adjustAudioMixingVolume(volume);
+
+// Gets the playback position (ms) of the mixed audio.
+localStream.getAudioMixingCurrentPosition();
+
+// Sets the playback position of the mixed audio.
+localStream.setAudioMixingPosition(pos);
+
+// Pauses audio mixing.
+localStream.pauseAudioMixing();
+
+// Resumes audio mixing.
+localStream.resumeAudioMixing();
+
+// Gets the duration (ms) of audio mixing. 
+localStream.getAudioMixingDuration();
+
+// Stops audio mixing.
+localStream.stopAudioMixing();
+
+  Client.getCameras();
+  console.log(getCameras);
   client.enableAudioVolumeIndicator(); // Triggers the "volume-indicator" callback event every two seconds.
   client.on("volume-indicator", function(evt){
     evt.attr.forEach(function(volume, index){
@@ -186,9 +211,26 @@ function join() {
 		// gateway network stats
 		console.log(JSON.stringify(stats));
 	})
-}, 2 * 1000);
-
+}, 2 * 1000); 
   
+if (client.mediaDevices || client.mediaDevices.enumerateDevices) {
+  console.log("enumerateDevices() not supported.");
+  return;
+}
+
+// List cameras and microphones.
+
+client.mediaDevices.enumerateDevices()
+.then(function(devices) {
+  devices.forEach(function(device) {
+    console.log(device.kind + ": " + device.label +
+                " id = " + device.deviceId);
+  });
+})
+
+
+
+
   client.on('stream-subscribed', function (evt) {
     var stream = evt.stream;
     console.log("Subscribe remote stream successfully: " + stream.getId());
@@ -258,7 +300,7 @@ function getDevices() {
     }
   });
 }
-  
+
 //audioSelect.onchange = getDevices;
 //videoSelect.onchange = getDevices;
 getDevices();
